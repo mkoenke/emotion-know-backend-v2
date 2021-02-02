@@ -1,5 +1,5 @@
-
     class VideoReportsController < ApplicationController
+        skip_before_action :authorized_child, :authorized_parent, only: [:index, :create, :show,]
         def index 
             video_reports = VideoReport.all
             render json: video_reports
@@ -33,7 +33,7 @@
         private
     
         def video_report_params
-            params.permit( :title, :content, :video_entry_id, :parent_id, :child_id)
+            params.permit( :title, :video_entry_id, :parent_id, :child_id, :anger, :disgust, :fear, :joy, :sadness, :surprise)
         end
     
     end

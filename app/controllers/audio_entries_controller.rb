@@ -27,34 +27,6 @@ class AudioEntriesController < ApplicationController
        clip_url = url_for(audio_entry.clip)
        puts clip_url
        
-
-        # url = Rails.application.routes.url_helpers.rails_blob_path(attached_clip, only_path: true)
-        # render json: {message: "Attached to File", url: url, journal: audio_entry }
-
-       
-
-
-        # url = URI("https://transcribe.p.rapidapi.com/api/v1/transcribe_url/")
-
-        # http = Net::HTTP.new(url.host, url.port)
-        # http.use_ssl = true
-        # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-        # request = Net::HTTP::Post.new(url)
-        # request["content-type"] = 'application/json'
-        # request["x-rapidapi-key"] = ENV['rapidApi_key']
-        # request["x-rapidapi-host"] = 'transcribe.p.rapidapi.com'
-        # request.body = "{
-        #     \"url\": \"#{clip_url}\"
-        # }"
-
-        # response = http.request(request)
-        # puts "HERE IS THE RESPONSE"
-        # puts response.read_body
-                    
-          
-
-
         url = URI("https://twinword-emotion-analysis-v1.p.rapidapi.com/analyze/")
 
         http = Net::HTTP.new(url.host, url.port)

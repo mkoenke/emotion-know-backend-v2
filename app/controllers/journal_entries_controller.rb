@@ -25,42 +25,42 @@ class JournalEntriesController < ApplicationController
         puts journal_entry
         puts journal_entry.content
 
-    #     url = URI("https://twinword-emotion-analysis-v1.p.rapidapi.com/analyze/")
+        url = URI("https://twinword-emotion-analysis-v1.p.rapidapi.com/analyze/")
 
-    #     http = Net::HTTP.new(url.host, url.port)
-    #     http.use_ssl = true
-    #     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+        http = Net::HTTP.new(url.host, url.port)
+        http.use_ssl = true
+        http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
-    #     request = Net::HTTP::Post.new(url)
-    #     request["content-type"] = 'application/x-www-form-urlencoded'
-    #     request["x-rapidapi-key"] = ENV['rapidApi_key']
-    #     request["x-rapidapi-host"] = 'twinword-emotion-analysis-v1.p.rapidapi.com'
-    #     request.body = "text=#{journal_entry.content.split(" ").join("%20")}"
+        request = Net::HTTP::Post.new(url)
+        request["content-type"] = 'application/x-www-form-urlencoded'
+        request["x-rapidapi-key"] = ENV['rapidApi_key']
+        request["x-rapidapi-host"] = 'twinword-emotion-analysis-v1.p.rapidapi.com'
+        request.body = "text=#{journal_entry.content.split(" ").join("%20")}"
 
-    #     response = http.request(request)
-    #     resp = response.read_body
-    #     puts "RESPONSES"
-    #     puts resp
+        response = http.request(request)
+        resp = response.read_body
+        puts "RESPONSES"
+        puts resp
        
-    #     parsed_resp = JSON.parse resp.gsub('=>', ':')
-    #     puts parsed_resp
+        parsed_resp = JSON.parse resp.gsub('=>', ':')
+        puts parsed_resp
       
-    #     inner_hash = parsed_resp["emotion_scores"]
-    #     puts inner_hash
+        inner_hash = parsed_resp["emotion_scores"]
+        puts inner_hash
 
-    #    report = Report.create!(
-    #     title: journal_entry.title,
-    #     journal_entry_id: journal_entry.id,
-    #     parent_id: journal_entry.child.parent.id,
-    #     child_id: journal_entry.child.id,
-    #     anger: inner_hash["anger"],
-    #     disgust: inner_hash["disgust"],
-    #     fear: inner_hash["fear"],
-    #     joy: inner_hash["joy"],
-    #     sadness: inner_hash["sadness"],
-    #     surprise: inner_hash["surprise"],
-    #     )
-    #     puts report
+       report = Report.create!(
+        title: journal_entry.title,
+        journal_entry_id: journal_entry.id,
+        parent_id: journal_entry.child.parent.id,
+        child_id: journal_entry.child.id,
+        anger: inner_hash["anger"],
+        disgust: inner_hash["disgust"],
+        fear: inner_hash["fear"],
+        joy: inner_hash["joy"],
+        sadness: inner_hash["sadness"],
+        surprise: inner_hash["surprise"],
+        )
+        puts report
        
         render json: journal_entry
         
