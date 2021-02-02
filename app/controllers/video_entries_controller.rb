@@ -23,23 +23,23 @@
             video_entry = VideoEntry.create!(video_entry_params)
             attached_video = video_entry.video.attach(params[:video])
            
-           video_url = url_for(video_entry.video)
-           puts video_url
+        #    video_url = url_for(video_entry.video)
+        #    puts video_url
            
-           url = URI("https://api.kairos.com/v2/media?source=#{video_url}")
-        #    URL NEEDS TO BE EXTERNAL FROM AWS OR THE LIKE 
-           https = Net::HTTP.new(url.host, url.port);
-           https.use_ssl = true
+        #    url = URI("https://api.kairos.com/v2/media?source=#{video_url}")
+        # #    URL NEEDS TO BE EXTERNAL FROM AWS OR THE LIKE 
+        #    https = Net::HTTP.new(url.host, url.port);
+        #    https.use_ssl = true
            
-           request = Net::HTTP::Post.new(url)
-           request["Content-Type"] = "application/x-www-form-urlencoded"
-           request["app_id"] = "f8340296"
-           request["app_key"] = "2d1ef419fb0e4de99b91b23835a9f2f1"
-           form_data = []
-           request.set_form form_data, 'multipart/form-data'
-           response = https.request(request)
-           puts "RESPONSE HERE:"
-           puts response.read_body
+        #    request = Net::HTTP::Post.new(url)
+        #    request["Content-Type"] = "application/x-www-form-urlencoded"
+        #    request["app_id"] = "f8340296"
+        #    request["app_key"] = ENV['kairos_key']
+        #    form_data = []
+        #    request.set_form form_data, 'multipart/form-data'
+        #    response = https.request(request)
+        #    puts "RESPONSE HERE:"
+        #    puts response.read_body
            
             # url = URI("https://twinword-emotion-analysis-v1.p.rapidapi.com/analyze/")
     
