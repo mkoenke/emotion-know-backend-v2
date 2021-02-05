@@ -17,6 +17,8 @@
             # end
             render json: video_report
         end
+
+       
         
         def destroy
             video_report = VideoReport.find(params[:id])

@@ -9,7 +9,7 @@ require 'openssl'
 
 
 class JournalEntriesController < ApplicationController
-    skip_before_action :authorized_child, :authorized_parent, only: [:create, :destroy, :index]
+    skip_before_action :authorized_child, :authorized_parent, only: [:create, :destroy, :index, :report]
     def index
         journal_entries = JournalEntry.all
         render json: journal_entries
@@ -64,6 +64,12 @@ class JournalEntriesController < ApplicationController
        
         render json: journal_entry
         
+    end
+
+    def report
+        journal_entry = JournalEntry.find(params[:id])
+        report = journal_entry.report
+        render json: report
     end
 
     

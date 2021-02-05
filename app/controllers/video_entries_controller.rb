@@ -25,6 +25,12 @@
             render json: video_entry
             
         end
+
+        # def report
+        #     video_entry = VideoEntry.find(params[:id])
+        #     report = audio_entry.video_report
+        #     render json: report
+        # end
     
         
         def destroy

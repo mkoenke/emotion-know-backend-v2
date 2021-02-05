@@ -24,6 +24,7 @@ class ChildrenController < ApplicationController
         child = Child.find(params[:id])
         reports = Report.where(child_id: child.id)
         puts reports #how do i get this to be json data to be able to fetch it from front end
+        render json: reports
     end 
     
     def destroy

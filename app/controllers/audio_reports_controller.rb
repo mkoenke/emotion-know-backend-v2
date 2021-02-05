@@ -16,6 +16,7 @@ class AudioReportsController < ApplicationController
         # end
         render json: audio_report
     end
+
     
     def destroy
         audio_report = AudioReport.find(params[:id])

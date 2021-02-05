@@ -65,6 +65,12 @@ class AudioEntriesController < ApplicationController
         
     end
 
+    def report
+        audio_entry = AudioEntry.find(params[:id])
+        report = audio_entry.audio_report
+        render json: report
+    end
+
     
     def destroy
         audio_entry = AudioEntry.find(params[:id])
