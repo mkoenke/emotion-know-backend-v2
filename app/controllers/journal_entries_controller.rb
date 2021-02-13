@@ -1,12 +1,6 @@
 require 'uri'
 require 'net/http'
 require 'openssl'
-# require 'rest-client'
-# require 'open-uri'
-# require 'json'
-
-
-
 
 class JournalEntriesController < ApplicationController
     skip_before_action :authorized_child, :authorized_parent, only: [:create, :destroy, :index, :report]
