@@ -46,13 +46,7 @@ class JournalEntriesController < ApplicationController
         )
         render json: journal_entry      
     end
-
-    # def report
-    #     journal_entry = JournalEntry.find(params[:id])
-    #     report = journal_entry.report
-    #     render json: report
-    # end
-    
+  
     def destroy
         journal_entry = JournalEntry.find(params[:id])
         journal_entry.destroy!
