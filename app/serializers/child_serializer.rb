@@ -4,7 +4,6 @@ class ChildSerializer < ActiveModel::Serializer
   has_many :journal_entries
   has_many :audio_entries
   has_many :video_entries
-  # has_many :reports, through: :journal_entries
 
   def parent_email
     self.object.parent.email

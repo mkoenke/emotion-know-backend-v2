@@ -1,11 +1,6 @@
     require 'uri'
     require 'net/http'
-    require 'openssl'
-    # require 'rest-client'
-    # require 'open-uri'
-    # require 'json'
- 
-    
+    require 'openssl' 
     
     class VideoEntriesController < ApplicationController
         skip_before_action :authorized_child, :authorized_parent, only: [:create, :destroy, :index]
@@ -26,23 +21,10 @@
             
         end
 
-        # def report
-        #     video_entry = VideoEntry.find(params[:id])
-        #     report = audio_entry.video_report
-        #     render json: report
-        # end
-    
-        
         def destroy
             video_entry = VideoEntry.find(params[:id])
             video_entry.destroy!
             render json: {}
-        end
-    
-        def update
-            video_entry = VideoEntry.find(params[:id])
-            video_entry.update!(video_entry_params)
-            render json: video_entry
         end
     
         private

@@ -9,12 +9,9 @@ class ParentsController < ApplicationController
         parent = Parent.find(params[:id])
         render json: parent
     end
+
     def create
-        puts "IN CREATE METHOD"
         parent = Parent.create!(parent_params)
-        # if parent.save 
-        #     ParentMailer.welcome_email(parent).deliver_now
-        # end 
         puts parent
         if parent.valid?
             @token = encode_token(parent_id: parent.id)
@@ -24,18 +21,6 @@ class ParentsController < ApplicationController
             render json: {error: "failed to create parent"}, status: :not_acceptable
         end
       
-    end
-    
-    def destroy
-        parent = Parent.find(params[:id])
-        parent.destroy!
-        render json: {}
-    end
-
-    def update
-        parent = Parent.find(params[:id])
-        parent.update!(parent_params)
-        render json: parent
     end
 
     private

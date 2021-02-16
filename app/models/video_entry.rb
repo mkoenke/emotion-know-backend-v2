@@ -4,7 +4,6 @@ class VideoEntry < ApplicationRecord
     belongs_to :child
     has_one :video_report
 
-
     def url
         if self.video.attached?
           "http://localhost:3000/#{Rails.application.routes.url_helpers.rails_blob_path(self.video, only_path: true)}"
