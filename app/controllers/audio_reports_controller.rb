@@ -1,14 +1,14 @@
 class AudioReportsController < ApplicationController
     
-    def index 
-        audio_reports = AudioReport.all
-        render json: audio_reports
-    end
+    # def index 
+    #     audio_reports = AudioReport.all
+    #     render json: audio_reports
+    # end
 
-    def show
-        audio_report = AudioReport.find(params[:id])
-        render json: audio_report
-    end
+    # def show
+    #     audio_report = AudioReport.find(params[:id])
+    #     render json: audio_report
+    # end
 
     def create
         audio_report = AudioReport.create!(audio_report_params)

@@ -3,16 +3,16 @@
     require 'openssl' 
     
     class VideoEntriesController < ApplicationController
-        skip_before_action :authorized_child, :authorized_parent, only: [:create, :destroy, :index]
-        def index
-            video_entries = VideoEntry.all
-            render json: video_entries
-        end
+        skip_before_action :authorized_child, :authorized_parent, only: [:create, :destroy]
+        # def index
+        #     video_entries = VideoEntry.all
+        #     render json: video_entries
+        # end
     
-        def show
-            video_entry = VideoEntry.find(params[:id])
-            render json: video_entry
-        end
+        # def show
+        #     video_entry = VideoEntry.find(params[:id])
+        #     render json: video_entry
+        # end
     
         def create
             video_entry = VideoEntry.create!(video_entry_params)

@@ -1,14 +1,14 @@
 class ReportsController < ApplicationController
     
-    def index 
-        reports = Report.all
-        render json: reports
-    end
+    # def index 
+    #     reports = Report.all
+    #     render json: reports
+    # end
 
-    def show
-        report = Report.find(params[:id])
-        render json: report
-    end
+    # def show
+    #     report = Report.find(params[:id])
+    #     render json: report
+    # end
 
     def create
         report = Report.create!(report_params)
