@@ -1,16 +1,6 @@
 class ChildrenController < ApplicationController
     skip_before_action :authorized_child, :authorized_parent, only: [:create]
 
-    # def index 
-    #     children = Child.all
-    #     render json: children
-    # end
-
-    # def show
-    #     child = Child.find(params[:id])
-    #     render json: child
-    # end
-
     def create
         child = Child.create!(child_params)
         if child.valid?

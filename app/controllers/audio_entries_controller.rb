@@ -5,16 +5,6 @@ require 'openssl'
 class AudioEntriesController < ApplicationController
     skip_before_action :authorized_child, :authorized_parent, only: [:create, :destroy]
 
-    # def index
-    #     audio_entries = AudioEntry.all
-    #     render json: audio_entries
-    # end
-
-    # def show
-    #     audio_entry = AudioEntry.find(params[:id])
-    #     render json: audio_entry
-    # end
-
     def create
         audio_entry = AudioEntry.create!(audio_entry_params)
         attached_clip = audio_entry.clip.attach(params[:clip])

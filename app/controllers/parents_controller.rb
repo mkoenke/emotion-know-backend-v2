@@ -1,14 +1,5 @@
 class ParentsController < ApplicationController
     skip_before_action :authorized_child, :authorized_parent, only: [:create]
-    # def index 
-    #     parents = Parent.all
-    #     render json: parents
-    # end
-
-    # def show
-    #     parent = Parent.find(params[:id])
-    #     render json: parent
-    # end
 
     def create
         parent = Parent.create!(parent_params)
