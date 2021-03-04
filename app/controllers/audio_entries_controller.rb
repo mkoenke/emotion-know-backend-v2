@@ -16,8 +16,9 @@ class AudioEntriesController < ApplicationController
         http.verify_mode = OpenSSL::SSL::VERIFY_NONE
         request = Net::HTTP::Post.new(url)
         request["content-type"] = 'application/x-www-form-urlencoded'
+        request["x-rapidapi-key"] = 'b5e53cdd43msh1789007757d5e6cp16375ejsn5b00f98de59e'
         request["x-rapidapi-key"] = ENV['rapidApi_key']
-        request["x-rapidapi-host"] = 'twinword-emotion-analysis-v1.p.rapidapi.com'
+        # request["x-rapidapi-host"] = 'twinword-emotion-analysis-v1.p.rapidapi.com'
         request.body = "text=#{audio_entry.content.split(" ").join("%20")}"
         response = http.request(request)
         resp = response.read_body      
