@@ -44,9 +44,9 @@ gem "active_model_serializers", "~> 0.10.12"
 
 gem "jwt", "~> 2.2"
 
-gem "figaro"
+
 gem "rest-client"
 gem "json"
-gem 'aws-sdk-s3', require: false
+
 # gem 'azure-storage-blob'
 gem 'azure-storage', '~> 0.15.0.preview', require: false

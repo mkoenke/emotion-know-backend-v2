@@ -36,29 +36,6 @@ ActiveRecord::Schema.define(version: 2021_01_29_161903) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "audio_entries", force: :cascade do |t|
-    t.string "title"
-    t.string "content"
-    t.integer "child_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "audio_reports", force: :cascade do |t|
-    t.string "title"
-    t.integer "audio_entry_id"
-    t.integer "child_id"
-    t.integer "parent_id"
-    t.decimal "anger"
-    t.decimal "disgust"
-    t.decimal "fear"
-    t.decimal "joy"
-    t.decimal "sadness"
-    t.decimal "surprise"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "children", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
@@ -68,34 +45,11 @@ ActiveRecord::Schema.define(version: 2021_01_29_161903) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "journal_entries", force: :cascade do |t|
-    t.string "title"
-    t.string "content"
-    t.integer "child_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "parents", force: :cascade do |t|
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
-  end
-
-  create_table "reports", force: :cascade do |t|
-    t.string "title"
-    t.integer "journal_entry_id"
-    t.integer "child_id"
-    t.integer "parent_id"
-    t.decimal "anger"
-    t.decimal "disgust"
-    t.decimal "fear"
-    t.decimal "joy"
-    t.decimal "sadness"
-    t.decimal "surprise"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "video_entries", force: :cascade do |t|
@@ -110,12 +64,12 @@ ActiveRecord::Schema.define(version: 2021_01_29_161903) do
     t.integer "video_entry_id"
     t.integer "child_id"
     t.integer "parent_id"
-    t.decimal "anger"
-    t.decimal "disgust"
-    t.decimal "fear"
-    t.decimal "joy"
-    t.decimal "sadness"
-    t.decimal "surprise"
+    t.decimal "anger", default: [], array: true
+    t.decimal "disgust", default: [], array: true
+    t.decimal "fear", default: [], array: true
+    t.decimal "joy", default: [], array: true
+    t.decimal "sadness", default: [], array: true
+    t.decimal "surprise", default: [], array: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
