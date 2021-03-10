@@ -9,7 +9,18 @@
         private
     
         def video_report_params
-            params.permit( :title, :video_entry_id, :parent_id, :child_id, :anger, :disgust, :fear, :joy, :sadness, :surprise)
+            params.permit( 
+                :title, 
+                :video_entry_id, 
+                :parent_id, 
+                :child_id, 
+                :anger => [], 
+                :disgust => [], 
+                :fear => [], 
+                :joy => [], 
+                :sadness => [], 
+                :surprise => []
+                )
         end
     
     end
