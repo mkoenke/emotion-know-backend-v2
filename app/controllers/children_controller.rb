@@ -1,5 +1,5 @@
 class ChildrenController < ApplicationController
-    skip_before_action :authorized_child, :authorized_parent, only: [:create]
+    skip_before_action :authorized_child, :authorized_parent, only: [:create, :update]
 
     def create
         child = Child.create!(child_params)
@@ -10,6 +10,13 @@ class ChildrenController < ApplicationController
             render json: {error: "failed to create child"}, status: :not_acceptable
         end
     end
+
+    def update
+        child = Child.find(params[:id])
+        child.update!(child_params)
+        render json: child
+    end
+
 
     private
 

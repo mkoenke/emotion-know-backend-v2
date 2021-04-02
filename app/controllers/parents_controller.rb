@@ -1,5 +1,5 @@
 class ParentsController < ApplicationController
-    skip_before_action :authorized_child, :authorized_parent, only: [:create]
+    skip_before_action :authorized_child, :authorized_parent, only: [:create, :update]
 
     def create
         parent = Parent.create!(parent_params)
@@ -12,6 +12,12 @@ class ParentsController < ApplicationController
             render json: {error: "failed to create parent"}, status: :not_acceptable
         end
       
+    end
+
+    def update
+        parent = Parent.find(params[:id])
+        parent.update!(parent_params)
+        render json: parent
     end
 
     private
