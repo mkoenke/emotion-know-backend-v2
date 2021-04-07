@@ -1,5 +1,5 @@
 class ParentsController < ApplicationController
-    skip_before_action :authorized_child, :authorized_parent, only: [:create, :update]
+    skip_before_action :authorized_child, :authorized_parent, only: [:create, :update, :destroy]
 
     def create
         parent = Parent.create!(parent_params)
