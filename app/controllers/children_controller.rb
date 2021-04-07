@@ -16,6 +16,12 @@ class ChildrenController < ApplicationController
         child.update!(child_params)
         render json: child
     end
+    
+    def destroy
+        child = Child.find(params[:id])
+        child.destroy!
+        render json: {}
+    end
 
 
     private

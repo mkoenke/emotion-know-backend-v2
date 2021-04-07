@@ -20,6 +20,13 @@ class ParentsController < ApplicationController
         render json: parent
     end
 
+    def destroy
+        parent = Parent.find(params[:id])
+        parent.destroy!
+        render json: {}
+    end
+
+
     private
 
     def parent_params
