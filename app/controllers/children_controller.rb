@@ -19,9 +19,7 @@ class ChildrenController < ApplicationController
     
     def destroy
         child = Child.find(params[:id])
-        parent = Parent.find(child.parent.id)
         child.destroy!
-        parent.destroy!
         render json: {}
     end
 
