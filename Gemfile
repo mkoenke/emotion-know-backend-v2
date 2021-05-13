@@ -50,3 +50,5 @@ gem "json"
 
 # gem 'azure-storage-blob'
 gem 'azure-storage', '~> 0.15.0.preview', require: false
+
+gem 'figaro', '~> 1.1', '>= 1.1.1'
