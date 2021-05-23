@@ -1,5 +1,5 @@
 class ChildSerializer < ActiveModel::Serializer
-  attributes :id, :username, :image, :parent_email, :parent
+  attributes :id, :username, :name, :image, :parent_email, :parent
 
   has_many :video_entries
 
