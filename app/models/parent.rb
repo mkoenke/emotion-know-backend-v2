@@ -3,6 +3,10 @@ class Parent < ApplicationRecord
     has_many :children
     has_many :video_reports
 
+    validates_presence_of :email, :password_digest
+    validates_format_of :email, with: URI::MailTo::EMAIL_REGEXP
+    validates :email, uniqueness: { case_sensitive: false }
+
     def send_password_reset
         self.password_reset_token = generate_base64_token
         self.password_reset_sent_at = Time.zone.now
