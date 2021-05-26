@@ -10,7 +10,7 @@ class Child < ApplicationRecord
         self.password_reset_token = generate_base64_token
         self.password_reset_sent_at = Time.zone.now
         save!
-     #    ParentMailer.password_reset(self).deliver_now
+        ParentMailer.password_reset(self.parent).deliver_now
      end
  
      def password_token_valid?
