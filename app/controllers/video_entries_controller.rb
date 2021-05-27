@@ -5,11 +5,17 @@
     class VideoEntriesController < ApplicationController
         skip_before_action :authorized_child, :authorized_parent, only: [:create, :destroy]
    
+        def show
+            video_entry = VideoEntry.find(params[:id])
+            puts video_entry
+            # attached_video = video_entry.video.attach(params[:video])
+            render json: video_entry
+        end
+
         def create
             video_entry = VideoEntry.create!(video_entry_params)
             attached_video = video_entry.video.attach(params[:video])    
             render json: video_entry
-            
         end
 
         def destroy
