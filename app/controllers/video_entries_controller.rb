@@ -9,7 +9,6 @@
             video_entry = VideoEntry.create!(video_entry_params)
             attached_video = video_entry.video.attach(params[:video])    
             render json: video_entry
-            
         end
 
         def destroy
