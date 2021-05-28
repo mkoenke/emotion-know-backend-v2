@@ -1,5 +1,10 @@
 class VideoEntriesController < ApplicationController
-    skip_before_action :authorized_child, :authorized_parent, only: [:show, :create, :destroy]
+    skip_before_action :authorized_child, :authorized_parent, only: [:index, :show, :create, :destroy]
+
+    def index
+        video_entries = VideoEntry.all
+        render json: video_entries
+    end
 
     def show
         video_entry = VideoEntry.find(params[:id])
