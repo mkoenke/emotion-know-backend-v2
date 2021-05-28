@@ -46,11 +46,9 @@ class PasswordsController < ApplicationController
 
   def reset_child
     parent = Parent.find_by(password_reset_token: params[:token], email: params[:email])
-    
     if parent.present? && parent.password_token_valid?
       child = Child.find_by(username: params[:username])
-      puts "CHILD: #{child}" 
-      # invaidate parent token
+      parent.invalidate_token # invaidate parent token
       if child.reset_password(params[:password])
         render json: {
           alert: "Your password has been successfuly reset!"
