@@ -18,7 +18,7 @@ class Child < ApplicationRecord
      end
  
      def reset_password(password)
-         self.password_reset_token = nil
+        #  self.password_reset_token = nil
          self.password = password
          save!
      end
