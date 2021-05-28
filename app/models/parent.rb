@@ -32,6 +32,10 @@ class Parent < ApplicationRecord
         save!
     end
 
+    def invalidate_token
+        self.password_reset_token = nil
+    end
+
     private
 
     def generate_base64_token

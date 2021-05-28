@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post '/forgot_password', to: "passwords#forgot"
   post '/forgot_child_password', to: "passwords#forgot_child"
   post '/reset_password', to: "passwords#reset"
+  post '/reset_child_password', to: "passwords#reset_child"
   get 'get_current_parent', to: "sessions#get_current_parent"
 
 end

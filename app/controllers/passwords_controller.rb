@@ -44,4 +44,24 @@ class PasswordsController < ApplicationController
     end
   end
 
+  def reset_child
+    parent = Parent.find_by(password_reset_token: params[:token], email: params[:email])
+    
+    if parent.present? && parent.password_token_valid?
+      child = Child.find_by(username: params[:username])
+      puts "CHILD: #{child}" 
+      # invaidate parent token
+      if child.reset_password(params[:password])
+        render json: {
+          alert: "Your password has been successfuly reset!"
+        }
+        session[:parent_id] = parent.id
+      else
+        render json: { error: parent.errors.full_messages }, status: :unprocessable_entity
+      end
+    else
+      render json: {error:  ['Link not valid or expired. Try generating a new link.']}, status: :not_found
+    end
+  end
+
 end
