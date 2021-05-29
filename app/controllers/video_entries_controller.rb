@@ -4,9 +4,9 @@
     
     class VideoEntriesController < ApplicationController
         skip_before_action :authorized_child, only: [:create]
-    #    if :authorized_child
-    #      skip_before_action :authorized_parent, only: [:delete]
-    #    end
+
+        skip_before_action :authorized_parent, only: [:destroy]
+
    
         def create
             video_entry = VideoEntry.create!(video_entry_params)

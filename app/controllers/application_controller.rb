@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::API
 
   ##need to figure out how to run only one at a time - so if a parent is authorized it doesnt run authorization for a child and vice versa
-    before_action :authorized_child :authorized_parent
+    before_action :authorized_child, :authorized_parent
     
     def encode_token(payload)
         JWT.encode(payload, ENV['jwt_key'])
