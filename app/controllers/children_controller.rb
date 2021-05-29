@@ -23,7 +23,6 @@ class ChildrenController < ApplicationController
         render json: {}
     end
 
-
     private
 
     def child_params
