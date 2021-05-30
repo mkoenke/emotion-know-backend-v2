@@ -3,7 +3,7 @@ class VideoEntriesController < ApplicationController
 
     def index
         video_entries = VideoEntry.all
-        render json: video_entries
+        render json: video_entries, adapter: nil
     end
 
     def show
