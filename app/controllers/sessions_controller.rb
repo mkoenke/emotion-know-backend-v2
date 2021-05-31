@@ -11,3 +11,5 @@ class SessionsController < ApplicationController
   end
 
 end
+
+# not being used yet!

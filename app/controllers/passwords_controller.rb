@@ -1,5 +1,5 @@
 class PasswordsController < ApplicationController
-  skip_before_action :authorized_child 
+  skip_before_action :authorized_child, only: [:forgot, :reset, :forgot_child, :reset_child]
   skip_before_action :authorized_parent, only: [:forgot, :reset, :reset_child]
 
   def forgot
