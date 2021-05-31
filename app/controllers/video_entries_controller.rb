@@ -3,11 +3,8 @@
     require 'openssl' 
     
     class VideoEntriesController < ApplicationController
-        skip_before_action :authorized_child, only: [:create]
-
-        skip_before_action :authorized_parent, only: [:destroy]
-
-   
+        skip_before_action :authorized_parent, only: [:create, :destroy]
+ 
         def create
             video_entry = VideoEntry.create!(video_entry_params)
             attached_video = video_entry.video.attach(params[:video])    
