@@ -1,5 +1,6 @@
 class ChildrenController < ApplicationController
-    skip_before_action :authorized_child, :authorized_parent, only: [:create, :update, :destroy]
+    skip_before_action :authorized_child, only: [:create]
+    skip_before_action :authorized_parent, only: [:create, :update, :destroy]
 
     def create
         child = Child.create!(child_params)

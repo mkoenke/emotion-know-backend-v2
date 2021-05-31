@@ -1,5 +1,6 @@
 class ParentsController < ApplicationController
-    skip_before_action :authorized_child, :authorized_parent, only: [:create, :update, :destroy]
+    skip_before_action :authorized_child, only: [:create, :update, :destroy]
+    skip_before_action :authorized_parent, only: [:create]
 
     def create
         parent = Parent.create!(parent_params)
@@ -22,9 +23,10 @@ class ParentsController < ApplicationController
 
     def destroy
         parent = Parent.find(params[:id])
-        child = Child.find(parent.child.id)
+        parent.children.each do |child|
+            child.destroy!
+        end
         parent.destroy!
-        child.destroy!
         render json: {}
     end
 
