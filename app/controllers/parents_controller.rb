@@ -1,5 +1,6 @@
 class ParentsController < ApplicationController
-    skip_before_action :authorized_child, :authorized_parent, only: [:create, :update, :destroy]
+    skip_before_action :authorized_child
+    skip_before_action :authorized_parent, only: [:create]
 
     def create
         parent = Parent.create!(parent_params)
@@ -22,9 +23,9 @@ class ParentsController < ApplicationController
 
     def destroy
         parent = Parent.find(params[:id])
-        child = Child.find(parent.child.id)
+        # child = Child.find(parent.child.id) need to find all children and destroy all
         parent.destroy!
-        child.destroy!
+        # child.destroy!
         render json: {}
     end
 
