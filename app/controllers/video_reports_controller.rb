@@ -1,5 +1,5 @@
     class VideoReportsController < ApplicationController
-        skip_before_action :authorized_child, :authorized_parent, only: [ :create]
+        skip_before_action :authorized_parent, only: [ :create]
   
         def create
             video_report = VideoReport.create!(video_report_params)
