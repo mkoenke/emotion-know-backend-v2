@@ -10,6 +10,8 @@ class SessionsController < ApplicationController
     end
   end
 
+  const arrow = () => { return}
+
 end
 
 # not being used yet!
