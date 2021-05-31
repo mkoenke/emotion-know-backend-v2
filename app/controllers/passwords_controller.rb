@@ -1,6 +1,7 @@
 class PasswordsController < ApplicationController
-  skip_before_action :authorized_child, :authorized_parent
-  
+  skip_before_action :authorized_child 
+  skip_before_action :authorized_parent, only: [:forgot, :reset, :reset_child]
+
   def forgot
     parent = Parent.find_by(email: params[:_json])
     if parent
