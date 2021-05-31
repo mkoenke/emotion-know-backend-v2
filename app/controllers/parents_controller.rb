@@ -23,9 +23,10 @@ class ParentsController < ApplicationController
 
     def destroy
         parent = Parent.find(params[:id])
-        # child = Child.find(parent.child.id) need to find all children and destroy all
+        parent.children.each do |child|
+            child.destroy!
+        end
         parent.destroy!
-        # child.destroy!
         render json: {}
     end
 
